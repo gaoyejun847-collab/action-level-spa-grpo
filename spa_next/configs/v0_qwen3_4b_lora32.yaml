@@ -1,0 +1,101 @@
+# Load using spa_next.training.launch; base schema is from the pinned verl wheel.
+algorithm:
+  adv_estimator: grpo
+  norm_adv_by_std_in_grpo: true
+  use_kl_in_reward: false
+data:
+  train_files: outputs/v0/data/train.parquet
+  val_files: outputs/v0/data/val.parquet
+  train_batch_size: 4
+  val_batch_size: 4
+  max_prompt_length: 1024
+  max_response_length: 3072
+  filter_overlong_prompts: true
+  truncation: error
+  return_raw_chat: true
+  seed: 42
+actor_rollout_ref:
+  model:
+    path: Qwen/Qwen3-4B-Instruct-2507
+    lora_rank: 32
+    lora_alpha: 64
+    target_modules: all-linear
+    enable_gradient_checkpointing: true
+    use_remove_padding: false
+    override_config:
+      attn_implementation: sdpa
+      # verl 0.7's async server reads this value instead of rollout.max_model_len.
+      max_position_embeddings: 4096
+  actor:
+    strategy: fsdp
+    ppo_mini_batch_size: 4
+    ppo_micro_batch_size_per_gpu: 1
+    ppo_epochs: 1
+    loss_agg_mode: token-mean
+    use_kl_loss: true
+    kl_loss_coef: 0.001
+    kl_loss_type: low_var_kl
+    entropy_coeff: 0
+    use_torch_compile: false
+    optim:
+      lr: 0.00001
+    fsdp_config:
+      model_dtype: bf16
+      # Keep FSDP shards on GPU: CPU offload plus vLLM sleep exceeded this host's RAM.
+      param_offload: false
+      optimizer_offload: true
+      fsdp_size: 4
+  ref:
+    log_prob_micro_batch_size_per_gpu: 1
+    fsdp_config:
+      param_offload: true
+  rollout:
+    name: vllm
+    mode: async
+    n: 4
+    temperature: 1.0
+    top_p: 1.0
+    top_k: -1
+    calculate_log_probs: true
+    tensor_model_parallel_size: 4
+    gpu_memory_utilization: 0.35
+    max_model_len: 4096
+    max_num_batched_tokens: 4096
+    max_num_seqs: 4
+    enforce_eager: true
+    # Avoid an additional host copy of the base model during vLLM sleep.
+    free_cache_engine: false
+    load_format: safetensors
+    layered_summon: true
+    log_prob_micro_batch_size_per_gpu: 1
+    skip_rollout: false
+    val_kwargs:
+      temperature: 0.0
+      top_p: 1.0
+      n: 1
+      do_sample: false
+    agent:
+      num_workers: 2
+      default_agent_loop: spa_webshop
+      agent_loop_config_path: spa_next/configs/agent_loop.yaml
+      agent_loop_manager_class: spa_next.training.verl_adapter.SPAManager
+reward_model:
+  enable: false
+  use_reward_loop: false
+ray_kwargs:
+  ray_init:
+    num_cpus: 20
+    object_store_memory: 1073741824
+trainer:
+  project_name: spa-v0
+  experiment_name: qwen3-4b-instruct-2507-lora32-outcome
+  logger: [console, tensorboard]
+  nnodes: 1
+  n_gpus_per_node: 4
+  total_epochs: 1
+  total_training_steps: 2
+  save_freq: 1
+  test_freq: 1
+  val_before_train: true
+  default_local_dir: outputs/v0/checkpoints
+  resume_mode: auto

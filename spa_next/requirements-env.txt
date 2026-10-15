@@ -1,0 +1,17 @@
+# Keep this environment separate from verl/vLLM. Java 11 and en_core_web_lg are also required.
+numpy==1.26.4
+spacy==3.6.1
+thinc==8.1.12
+pyserini==0.17.0
+gym==0.24.0
+Flask==2.1.2
+Werkzeug==2.0.3
+beautifulsoup4==4.11.1
+cleantext==1.1.4
+rank-bm25==0.2.2
+thefuzz==0.20.0
+rich
+transformers==4.30.2
+selenium==4.2.0
+faiss-cpu==1.7.4
+# Install CPU torch separately using https://download.pytorch.org/whl/cpu.

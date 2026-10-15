@@ -1,0 +1,2 @@
+- name: spa_webshop
+  _target_: spa_next.training.verl_adapter.SPAAgentLoop

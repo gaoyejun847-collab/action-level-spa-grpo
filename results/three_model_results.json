@@ -1,0 +1,31 @@
+{
+  "test_sha256": "9d3c540db931dbec8f90db60d5e8c2d9a520cc0da75b539935afdf06dc26ecd7",
+  "results": [
+    {
+      "model": "SFT",
+      "step": 0,
+      "tasks": 1210,
+      "reused": true,
+      "success_rate": 0.2884297520661157,
+      "average_reward": 0.6301321715793826
+    },
+    {
+      "model": "V0_GRPO",
+      "step": 2417,
+      "tasks": 1210,
+      "reused": true,
+      "success_rate": 0.3859504132231405,
+      "average_reward": 0.651015352466998
+    },
+    {
+      "model": "SPA_GRPO",
+      "step": 2499,
+      "tasks": 1210,
+      "reused": false,
+      "success_rate": 0.47024793388429753,
+      "average_reward": 0.715545983070677
+    }
+  ],
+  "evaluation_date": "2026-10-03",
+  "note": "Different training initializations and budgets; not a controlled algorithm ablation."
+}

@@ -1,0 +1,1 @@
+"""Isolated environment adapters."""

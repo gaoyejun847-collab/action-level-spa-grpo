@@ -1,0 +1,210 @@
+{
+  "action_audit_date": "2026-10-16",
+  "token_audit_date": "2026-10-20",
+  "action_definition": "invalid_format / complete actions submitted to environment",
+  "action_cohorts": {
+    "SFT_test": {
+      "trajectories": 1210,
+      "successes": 349,
+      "termination:terminated": 1194,
+      "generated_steps": 4208,
+      "submitted_actions": 4208,
+      "termination:context_budget": 16,
+      "unique_tasks": 1210,
+      "action_format_failure_rate": 0.0,
+      "trajectory_format_failure_rate": 0.0,
+      "invalid_action_rate": 0.0
+    },
+    "V0_test": {
+      "trajectories": 1210,
+      "successes": 467,
+      "termination:terminated": 1105,
+      "generated_steps": 4737,
+      "submitted_actions": 4662,
+      "termination:incomplete_action": 75,
+      "incomplete_steps": 75,
+      "termination:context_budget": 26,
+      "invalid_format": 25,
+      "trajectories_with:invalid_format": 6,
+      "termination:max_steps": 4,
+      "unique_tasks": 1210,
+      "action_format_failure_rate": 0.005362505362505363,
+      "trajectory_format_failure_rate": 0.0049586776859504135,
+      "invalid_action_rate": 0.0
+    },
+    "SPA_test": {
+      "trajectories": 1210,
+      "successes": 569,
+      "termination:terminated": 1186,
+      "generated_steps": 5096,
+      "submitted_actions": 5094,
+      "termination:context_budget": 21,
+      "termination:incomplete_action": 2,
+      "incomplete_steps": 2,
+      "termination:max_steps": 1,
+      "unique_tasks": 1210,
+      "action_format_failure_rate": 0.0,
+      "trajectory_format_failure_rate": 0.0,
+      "invalid_action_rate": 0.0
+    },
+    "SPA_training_saved": {
+      "trajectories": 37936,
+      "successes": 15541,
+      "termination:terminated": 36928,
+      "generated_steps": 166020,
+      "submitted_actions": 165933,
+      "termination:context_budget": 811,
+      "termination:incomplete_action": 87,
+      "incomplete_steps": 87,
+      "invalid_format": 82,
+      "trajectories_with:invalid_format": 43,
+      "termination:max_steps": 110,
+      "unique_tasks": 9483,
+      "action_format_failure_rate": 0.0004941753599344313,
+      "trajectory_format_failure_rate": 0.0011334879797553774,
+      "invalid_action_rate": 0.0
+    },
+    "SPA_validation_saved": {
+      "trajectories": 2560,
+      "successes": 1209,
+      "termination:terminated": 2470,
+      "generated_steps": 10940,
+      "submitted_actions": 10924,
+      "termination:context_budget": 63,
+      "termination:max_steps": 11,
+      "termination:incomplete_action": 16,
+      "incomplete_steps": 16,
+      "unique_tasks": 128,
+      "action_format_failure_rate": 0.0,
+      "trajectory_format_failure_rate": 0.0,
+      "invalid_action_rate": 0.0
+    }
+  },
+  "tokens": {
+    "SFT": {
+      "tasks": 1210,
+      "metrics": {
+        "calls": {
+          "total": 4208,
+          "mean": 3.477685950413223,
+          "median": 3.0,
+          "p95_nearest_rank": 5,
+          "min": 2,
+          "max": 6
+        },
+        "generated_tokens": {
+          "total": 169028,
+          "mean": 139.69256198347108,
+          "median": 132.0,
+          "p95_nearest_rank": 203,
+          "min": 72,
+          "max": 328
+        },
+        "cumulative_input_tokens": {
+          "total": 3762911,
+          "mean": 3109.8438016528926,
+          "median": 2417.0,
+          "p95_nearest_rank": 6118,
+          "min": 1165,
+          "max": 10889
+        },
+        "cumulative_input_plus_output_tokens": {
+          "total": 3931939,
+          "mean": 3249.5363636363636,
+          "median": 2544.5,
+          "p95_nearest_rank": 6304,
+          "min": 1237,
+          "max": 11207
+        }
+      },
+      "stage_elapsed_seconds": 8315.169457459822,
+      "amortized_stage_seconds_per_task": 6.872040873933737,
+      "per_task_latency_available": false
+    },
+    "V0_GRPO": {
+      "tasks": 1210,
+      "metrics": {
+        "calls": {
+          "total": 4737,
+          "mean": 3.914876033057851,
+          "median": 4.0,
+          "p95_nearest_rank": 5,
+          "min": 2,
+          "max": 10
+        },
+        "generated_tokens": {
+          "total": 404464,
+          "mean": 334.26776859504133,
+          "median": 321.0,
+          "p95_nearest_rank": 495,
+          "min": 172,
+          "max": 863
+        },
+        "cumulative_input_tokens": {
+          "total": 4962218,
+          "mean": 4101.0066115702475,
+          "median": 3863.5,
+          "p95_nearest_rank": 7490,
+          "min": 940,
+          "max": 19350
+        },
+        "cumulative_input_plus_output_tokens": {
+          "total": 5366682,
+          "mean": 4435.27438016529,
+          "median": 4178.5,
+          "p95_nearest_rank": 7934,
+          "min": 1265,
+          "max": 20213
+        }
+      },
+      "stage_elapsed_seconds": 17291.878736570477,
+      "amortized_stage_seconds_per_task": 14.290808873198742,
+      "per_task_latency_available": false
+    },
+    "SPA_GRPO": {
+      "tasks": 1210,
+      "metrics": {
+        "calls": {
+          "total": 5096,
+          "mean": 4.211570247933884,
+          "median": 4.0,
+          "p95_nearest_rank": 6,
+          "min": 2,
+          "max": 10
+        },
+        "generated_tokens": {
+          "total": 205084,
+          "mean": 169.4909090909091,
+          "median": 165.0,
+          "p95_nearest_rank": 237,
+          "min": 85,
+          "max": 436
+        },
+        "cumulative_input_tokens": {
+          "total": 5196688,
+          "mean": 4294.78347107438,
+          "median": 3834.0,
+          "p95_nearest_rank": 7551,
+          "min": 1118,
+          "max": 17401
+        },
+        "cumulative_input_plus_output_tokens": {
+          "total": 5401772,
+          "mean": 4464.27438016529,
+          "median": 3995.5,
+          "p95_nearest_rank": 7785,
+          "min": 1213,
+          "max": 17779
+        }
+      },
+      "stage_elapsed_seconds": 9954.106553843245,
+      "amortized_stage_seconds_per_task": 8.22653434201921,
+      "per_task_latency_available": false
+    }
+  },
+  "limitations": [
+    "Saved training rollouts are not proof of optimizer consumption.",
+    "Stage time divided by tasks is not per-task latency.",
+    "Cumulative input includes repeated context; prefix cache is not deducted."
+  ]
+}

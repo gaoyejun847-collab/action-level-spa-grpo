@@ -2,7 +2,7 @@
 
 **面向 WebShop 多约束购物任务的动作级强化学习实验。** 在 GRPO 中引入独立过程奖励模型（PRM），探索从轨迹级优势到动作级训练信号的扩展。
 
-[核心算法](docs/algorithm.md) · [训练入口](docs/training.md) · [实验结果](docs/results.md) · [代码导航](docs/code-map.md)
+[核心算法](docs/algorithm.md) · [训练入口](docs/training.md) · [实验结果](docs/results.md) · [代码导航](docs/code-map.md) · [模型架构](docs/model-architecture.md)
 
 ## 问题与实现
 
@@ -43,6 +43,7 @@ flowchart LR
 | 动作回报和优势怎么算？ | [action_grpo.py](spa_next/algorithms/action_grpo.py) / [公式与局限](docs/algorithm.md) |
 | token loss 与动作权重怎么算？ | [losses.py](spa_next/algorithms/losses.py) |
 | 如何采样、训练和评估？ | [训练入口与前置条件](docs/training.md) |
+| 模型结构、LoRA 与 PRM 接在哪里？ | [模型架构详解](docs/model-architecture.md) |
 | PRM 如何训练？ | [model.py](spa_next/prm/model.py)、[train.py](spa_next/prm/train.py) |
 | 哪些是核心代码，哪些是历史实验脚本？ | [代码导航](docs/code-map.md) |
 
